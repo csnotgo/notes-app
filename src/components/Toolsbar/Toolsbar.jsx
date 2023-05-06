@@ -1,6 +1,5 @@
 import { SearchBox } from "../SearchBox/SearchBox";
-import { Container } from "../Container/Container";
-import { Header, ToolButton } from "./Toolsbar.styled";
+import { Header, ToolButton, Container } from "./Toolsbar.styled";
 import { ImPlus } from "react-icons/im";
 import { BsTrash3 } from "react-icons/bs";
 import { FiEdit } from "react-icons/fi";

@@ -1,15 +1,17 @@
 import styled from "styled-components";
 import { device } from "../../utils/device";
+import { MainContainer } from "../Container/Container.styled";
 
 export const Header = styled.div`
+  background-color: lightgray;
+  border-bottom: 2px solid rgba(112, 112, 112, 0.3);
+`;
+
+export const Container = styled(MainContainer)`
   display: flex;
   align-items: center;
   gap: 10px;
   height: 40px;
-  padding: 0 15px;
-
-  background-color: lightgray;
-  border-bottom: 2px solid rgba(112, 112, 112, 0.3);
 `;
 
 export const ToolButton = styled.button`
