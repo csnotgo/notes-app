@@ -1,3 +1,12 @@
+import { NoteContainer, NoteText, NoteWrapper } from "./Workspace.styled";
+
 export const Workspace = () => {
-  return <div>WorkSpace</div>;
+  return (
+    <NoteContainer>
+      <NoteWrapper>
+        <p>date</p>
+        <NoteText name="note" readOnly></NoteText>
+      </NoteWrapper>
+    </NoteContainer>
+  );
 };

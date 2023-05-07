@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { device } from "../../utils/device";
-import { MainContainer } from "../Container/Container.styled";
+import { MainContainer } from "../App/App.styled";
 
 export const Header = styled.div`
   background-color: lightgray;
@@ -8,7 +8,6 @@ export const Header = styled.div`
 `;
 
 export const Container = styled(MainContainer)`
-  display: flex;
   align-items: center;
   gap: 10px;
   height: 40px;
