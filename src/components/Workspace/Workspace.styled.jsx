@@ -16,17 +16,37 @@ export const NoteWrapper = styled.div`
   border-right: 1px solid lightgray;
 `;
 
-export const NoteText = styled.textarea`
+export const DateTime = styled.p`
+  color: gray;
+`;
+
+export const NoteTitle = styled.textarea`
   resize: none;
   display: block;
-  height: 100%;
+  height: fit-content;
   width: 100%;
 
   font-size: 16px;
 
   border: none;
-  pointer-events: none;
+  cursor: ${(prop) => (prop.readOnly ? "default" : "text")};
+  overflow-y: hidden;
   :focus-visible {
     outline: none;
+  }
+`;
+
+export const NoteText = styled(NoteTitle)`
+  height: 90%;
+
+  overflow-y: scroll;
+
+  ::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 7px;
+  }
+  ::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(104, 103, 103, 0.5);
   }
 `;

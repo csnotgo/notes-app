@@ -3,7 +3,7 @@ import { device } from "../../utils/device";
 
 export const NotesListContainer = styled.div`
   height: calc(100vh - 40px);
-  max-width: 150px;
+  min-width: 150px;
   padding-right: 5px;
 
   overflow-y: scroll;
@@ -18,11 +18,15 @@ export const NotesListContainer = styled.div`
   }
 
   ${device.tablet} {
+    min-width: 300px;
     max-width: 300px;
   }
 `;
 
 export const List = styled.ul`
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: start;
   min-height: calc(101vh - 40px);
 
   border-right: 1px solid lightgray;

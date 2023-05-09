@@ -19,7 +19,7 @@ export const Input = styled.input`
   border: none;
   border-radius: 4px;
   color: inherit;
-  background-color: rgb(240, 240, 240);
+  background-color: #ffffff;
   box-shadow: 0px 1px 2px 1px rgba(112, 112, 112, 0.3);
 
   ::placeholder {

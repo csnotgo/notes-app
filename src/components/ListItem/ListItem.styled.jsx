@@ -6,6 +6,7 @@ export const Item = styled.li`
   padding-left: 30px;
 
   cursor: pointer;
+  background-color: ${(prop) => (prop.active ? "lightgray" : "transparent")};
 
   :hover,
   :focus,
@@ -15,6 +16,10 @@ export const Item = styled.li`
 `;
 
 export const ItemWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+
   height: 60px;
   padding: 10px 20px 10px 0;
 

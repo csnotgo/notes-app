@@ -4,17 +4,17 @@ import { ImPlus } from "react-icons/im";
 import { BsTrash3 } from "react-icons/bs";
 import { FiEdit } from "react-icons/fi";
 
-export const Toolsbar = () => {
+export const Toolsbar = ({ active, addNote, deleteNote, updateNote }) => {
   return (
     <Header>
       <Container>
-        <ToolButton type="button">
+        <ToolButton type="button" onClick={addNote}>
           <ImPlus color="#8a8a8a" size={16} />
         </ToolButton>
-        <ToolButton type="button">
+        <ToolButton type="button" disabled={active} onClick={deleteNote}>
           <BsTrash3 color="#8a8a8a" size={16} />
         </ToolButton>
-        <ToolButton type="button">
+        <ToolButton type="button" disabled={active} onClick={updateNote}>
           <FiEdit color="#8a8a8a" size={16} />
         </ToolButton>
         <SearchBox />

@@ -23,9 +23,15 @@ export const ToolButton = styled.button`
   border: none;
   border-radius: 4px;
   box-shadow: 0px 1px 2px 1px rgba(112, 112, 112, 0.3);
-  cursor: pointer;
+  background-color: ${(prop) => (prop.disabled ? "rgba(239, 239, 239, 0.3)" : "#ffffff")};
+
+  cursor: ${(prop) => (prop.disabled ? "auto" : "pointer")};
 
   ${device.tablet} {
     width: 45px;
+  }
+
+  :hover {
+    background-color: ${(prop) => (prop.disabled ? "rgba(239, 239, 239, 0.3)" : "inherit")};
   }
 `;
