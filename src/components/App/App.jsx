@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import { Modal } from "../Modal/Modal.jsx";
+import { ModalContent } from "../ModalContent/ModalContent.jsx";
 import { Toolsbar } from "../Toolsbar/Toolsbar.jsx";
 import { Sidebar } from "../Sidebar/Sidebar.jsx";
 import { Workspace } from "../Workspace/Workspace.jsx";
@@ -12,6 +14,8 @@ function App() {
   const [disabled, setDisabled] = useState(true);
   const [updated, setUpdated] = useState(false);
   const [isEdit, setIsEdit] = useState(true);
+  const [isActive, setIsActive] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     getAll()
@@ -36,35 +40,54 @@ function App() {
     }));
   };
 
-  const addNote = () => {
-    createNew();
+  const onItemClick = (boolean) => {
+    setIsActive(boolean);
+  };
+
+  const addNote = async () => {
+    await createNew();
     setUpdated(true);
   };
 
-  const deleteNote = () => {
-    deleteRecord(noteId);
+  const handleOpenModal = () => {
+    setIsModalOpen(!isModalOpen);
+  };
+
+  const deleteNote = async () => {
+    await deleteRecord(noteId);
+    handleOpenModal();
     setUpdated(true);
-    setNoteId("");
-    setOneNote("");
+
+    setIsEdit(true);
+    setIsActive(false);
     setDisabled(true);
   };
 
-  const updateNote = (note) => {
-    // updateRecord(noteId, note);
-    // setUpdated(true);
+  const updateNote = async (note) => {
+    await updateRecord(noteId, note);
+    setUpdated(true);
+  };
+
+  const canEditNote = () => {
     setIsEdit(false);
   };
 
   const shouldBtnDisabled = (boolean) => {
     setDisabled(boolean);
+    setIsEdit(true);
   };
 
   return (
     <div>
-      <Toolsbar active={disabled} addNote={addNote} deleteNote={deleteNote} updateNote={updateNote} />
+      {isModalOpen && (
+        <Modal onClose={handleOpenModal}>
+          <ModalContent onClose={handleOpenModal} action={deleteNote} text="Do you want delete this note?" />
+        </Modal>
+      )}
+      <Toolsbar active={disabled} addNote={addNote} openModal={handleOpenModal} canEditNote={canEditNote} />
       <MainContainer>
-        <Sidebar list={notes} getId={getId} shouldBtnDisabled={shouldBtnDisabled} />
-        <Workspace note={oneNote} isEdit={isEdit} />
+        <Sidebar list={notes} getId={getId} shouldBtnDisabled={shouldBtnDisabled} onItemClick={onItemClick} />
+        <Workspace note={oneNote} isEdit={isEdit} updateNote={updateNote} isActive={isActive} />
       </MainContainer>
     </div>
   );

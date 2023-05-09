@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
+import useDebounce from "react-debounced";
 import { DateTime, NoteContainer, NoteTitle, NoteText, NoteWrapper } from "./Workspace.styled";
 
-export const Workspace = ({ note, isEdit }) => {
+export const Workspace = ({ note, isEdit, updateNote, isActive }) => {
   const [noteArea, setNoteArea] = useState(note);
+  const debounce = useDebounce(1000);
 
   const noteDate = new Date(noteArea.date).toString().slice(3, 15);
   const time = new Date(noteArea.date).toLocaleTimeString().slice(0, -3);
@@ -13,6 +15,7 @@ export const Workspace = ({ note, isEdit }) => {
 
   const onChange = (e, name) => {
     setNoteArea((prevState) => ({ ...prevState, [name]: e.target.value }));
+    debounce(() => updateNote(noteArea));
   };
 
   return (
@@ -23,7 +26,7 @@ export const Workspace = ({ note, isEdit }) => {
             {noteDate} at {time}
           </DateTime>
         )}
-        {!isEdit && (
+        {isActive && (
           <>
             <NoteTitle
               name="title"

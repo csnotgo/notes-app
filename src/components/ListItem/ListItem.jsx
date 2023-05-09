@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { DescrWrapper, Item, ItemDate, ItemText, ItemTitle, ItemWrapper } from "./ListItem.styled";
 
-export const ListItem = ({ list, getId, shouldBtnDisabled }) => {
+export const ListItem = ({ list, getId, shouldBtnDisabled, onItemClick }) => {
   const [active, setActive] = useState("");
 
   const onClick = (id) => {
     getId(id);
     shouldBtnDisabled(false);
+    onItemClick(true);
 
     setActive(id);
   };

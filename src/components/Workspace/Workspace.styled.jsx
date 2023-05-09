@@ -34,6 +34,10 @@ export const NoteTitle = styled.textarea`
   :focus-visible {
     outline: none;
   }
+
+  ::placeholder {
+    color: ${(prop) => (prop.readOnly ? "transparent" : "lightgray")};
+  }
 `;
 
 export const NoteText = styled(NoteTitle)`

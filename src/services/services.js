@@ -39,8 +39,8 @@ export const updateRecord = async (id, note) => {
     return await axios.put(`dtypes/${id}.json?rest_api_key=${API_KEY} `, {
       values: {
         entity_id: "bFrCkYWRzkEyo4W5iaWOeq",
-        baWO3cQa1bFOD0WR1Mm10O: " ",
-        ddM3Kkm2bkk4kBwSojo8kB: " ",
+        baWO3cQa1bFOD0WR1Mm10O: note.title,
+        ddM3Kkm2bkk4kBwSojo8kB: note.text,
         dcIcBdQa5ei4k6WPVcH8o6: new Date(Date.now()),
       },
     });
