@@ -48,3 +48,14 @@ export const updateRecord = async (id, note) => {
     console.log(error);
   }
 };
+
+export const searchByQuery = async (query) => {
+  try {
+    return await axios.post(`https://quintadb.com.ua/search/a-qbL6WPjdT7VdJ1mgqJjJ.json?rest_api_key=${API_KEY}`, {
+      entity_id: "bFrCkYWRzkEyo4W5iaWOeq",
+      search: [[{ a: "ddM3Kkm2bkk4kBwSojo8kB", b: query, o: "contains" }]],
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};

@@ -5,7 +5,7 @@ import { Toolsbar } from "../Toolsbar/Toolsbar.jsx";
 import { Sidebar } from "../Sidebar/Sidebar.jsx";
 import { Workspace } from "../Workspace/Workspace.jsx";
 import { MainContainer } from "./App.styled.jsx";
-import { createNew, deleteRecord, getAll, updateRecord } from "../../services/services.js";
+import { createNew, deleteRecord, getAll, searchByQuery, updateRecord } from "../../services/services.js";
 
 function App() {
   const [notes, setNotes] = useState([]);
@@ -26,6 +26,20 @@ function App() {
     setUpdated(false);
   }, [updated]);
 
+  const onFilteredNotes = async (searchQuery) => {
+    try {
+      if (searchQuery === "") {
+        setUpdated(true);
+        return;
+      }
+
+      const { data } = await searchByQuery(searchQuery);
+      setNotes(data.records);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const getId = (id) => {
     if (!id) return;
     setNoteId(id);
@@ -45,8 +59,12 @@ function App() {
   };
 
   const addNote = async () => {
-    await createNew();
-    setUpdated(true);
+    try {
+      await createNew();
+      setUpdated(true);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const handleOpenModal = () => {
@@ -54,18 +72,26 @@ function App() {
   };
 
   const deleteNote = async () => {
-    await deleteRecord(noteId);
-    handleOpenModal();
-    setUpdated(true);
+    try {
+      await deleteRecord(noteId);
+      handleOpenModal();
+      setUpdated(true);
 
-    setIsEdit(true);
-    setIsActive(false);
-    setDisabled(true);
+      setIsEdit(true);
+      setIsActive(false);
+      setDisabled(true);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const updateNote = async (note) => {
-    await updateRecord(noteId, note);
-    setUpdated(true);
+    try {
+      await updateRecord(noteId, note);
+      setUpdated(true);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const canEditNote = () => {
@@ -84,7 +110,13 @@ function App() {
           <ModalContent onClose={handleOpenModal} action={deleteNote} text="Do you want delete this note?" />
         </Modal>
       )}
-      <Toolsbar active={disabled} addNote={addNote} openModal={handleOpenModal} canEditNote={canEditNote} />
+      <Toolsbar
+        active={disabled}
+        addNote={addNote}
+        openModal={handleOpenModal}
+        canEditNote={canEditNote}
+        searchQuery={onFilteredNotes}
+      />
       <MainContainer>
         <Sidebar list={notes} getId={getId} shouldBtnDisabled={shouldBtnDisabled} onItemClick={onItemClick} />
         <Workspace note={oneNote} isEdit={isEdit} updateNote={updateNote} isActive={isActive} />

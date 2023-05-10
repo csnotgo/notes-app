@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import { device } from "../../utils/device";
 import { BiSearch } from "react-icons/bi";
+import { AiOutlineCloseCircle } from "react-icons/ai";
+import { CloseBtn } from "../ModalContent/ModalContent.styled";
 
 export const InputBox = styled.div`
   position: relative;
@@ -54,4 +56,12 @@ export const SearchSVG = styled(BiSearch)`
   ${device.desktop} {
     left: 105px;
   }
+`;
+export const ResetBtn = styled(CloseBtn)`
+  top: 2px;
+`;
+
+export const ResetSVG = styled(AiOutlineCloseCircle)`
+  width: 20px;
+  height: 20px;
 `;

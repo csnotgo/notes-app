@@ -4,7 +4,7 @@ import { ImPlus } from "react-icons/im";
 import { BsTrash3 } from "react-icons/bs";
 import { FiEdit } from "react-icons/fi";
 
-export const Toolsbar = ({ active, addNote, openModal, canEditNote }) => {
+export const Toolsbar = ({ active, addNote, openModal, canEditNote, searchQuery }) => {
   return (
     <Header>
       <Container>
@@ -17,7 +17,7 @@ export const Toolsbar = ({ active, addNote, openModal, canEditNote }) => {
         <ToolButton type="button" disabled={active} onClick={canEditNote}>
           <FiEdit color="#8a8a8a" size={16} />
         </ToolButton>
-        <SearchBox />
+        <SearchBox searchQuery={searchQuery} />
       </Container>
     </Header>
   );
