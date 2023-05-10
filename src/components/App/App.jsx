@@ -48,9 +48,9 @@ function App() {
     const values = Object.values(note.values);
 
     setOneNote(() => ({
-      date: values.length === 1 ? values[0] : values[1],
-      title: values.length > 1 ? values[0] : "",
-      text: values.length > 1 ? values[2] : "",
+      date: values[0],
+      title: values.length > 1 ? values[1] : "",
+      text: values.length > 2 ? values[2] : "",
     }));
   };
 

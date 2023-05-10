@@ -16,7 +16,7 @@ export const ListItem = ({ list, getId, shouldBtnDisabled, onItemClick }) => {
     <>
       {list?.map(({ id, values }) => {
         const noteList = Object.values(values);
-        const correctDate = noteList.length > 1 ? noteList[1] : noteList[0];
+        const correctDate = noteList[0];
         const date = new Date(correctDate).toLocaleDateString().replaceAll(".", "/");
         const noteDate = new Date(correctDate).toDateString();
         const currentDate = new Date(Date.now()).toDateString();
@@ -25,10 +25,10 @@ export const ListItem = ({ list, getId, shouldBtnDisabled, onItemClick }) => {
         return (
           <Item key={id} onClick={() => onClick(id)} active={active === id ? true : false}>
             <ItemWrapper>
-              <ItemTitle>{noteList.length !== 1 ? noteList[0] : " "}</ItemTitle>
+              <ItemTitle>{noteList.length !== 1 ? noteList[1] : " "}</ItemTitle>
               <DescrWrapper>
                 <ItemDate>{noteDate === currentDate ? time : date}</ItemDate>
-                <ItemText>{noteList.length > 1 && noteList[2]}</ItemText>
+                <ItemText>{noteList.length > 2 && noteList[2]}</ItemText>
               </DescrWrapper>
             </ItemWrapper>
           </Item>

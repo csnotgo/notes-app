@@ -62,6 +62,47 @@ export const ResetBtn = styled(CloseBtn)`
 `;
 
 export const ResetSVG = styled(AiOutlineCloseCircle)`
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
+
+  ${device.tablet} {
+    width: 20px;
+    height: 20px;
+  }
+`;
+
+export const InfoBox = styled.div`
+  position: absolute;
+  bottom: -40px;
+  z-index: 1;
+
+  width: 120px;
+  height: 40px;
+  padding: 5px;
+
+  background-color: #fff;
+  border: 1px solid lightgray;
+  border-radius: 0 0 6px 6px;
+
+  ${device.tablet} {
+    width: 200px;
+  }
+
+  ${device.desktop} {
+    width: 300px;
+  }
+`;
+
+export const InfoText = styled.p`
+  font-size: 10px;
+  text-align: center;
+  color: gray;
+
+  ${device.tablet} {
+    font-size: 12px;
+  }
+
+  ${device.desktop} {
+    font-size: 14px;
+  }
 `;

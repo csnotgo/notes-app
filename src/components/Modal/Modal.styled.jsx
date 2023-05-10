@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { device } from "../../utils/device";
 
 export const Backdrop = styled.div`
   position: fixed;
@@ -14,11 +15,16 @@ export const Backdrop = styled.div`
 `;
 
 export const Content = styled.div`
-  width: 350px;
-  height: 200px;
+  width: 250px;
+  height: 180px;
   padding: 20px;
-  background-color: rgba(192, 192, 192, 0.3);
+  background-color: rgb(211, 211, 211);
   color: inherit;
   box-shadow: 10px 10px 30px rgba(82, 85, 95, 0.4);
   border-radius: 30px;
+
+  ${device.tablet} {
+    width: 350px;
+    height: 200px;
+  }
 `;

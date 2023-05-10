@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { device } from "../../utils/device";
 
 export const Item = styled.li`
   width: 100%;
@@ -28,10 +29,15 @@ export const ItemWrapper = styled.div`
 `;
 
 export const ItemTitle = styled.h2`
-  font-size: 16px;
+  font-size: 12px;
+  font-weight: 700;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+
+  ${device.tablet} {
+    font-size: 16px;
+  }
 `;
 
 export const DescrWrapper = styled.div`
@@ -41,13 +47,21 @@ export const DescrWrapper = styled.div`
 `;
 
 export const ItemDate = styled.p`
-  font-size: 14px;
+  font-size: 10px;
+
+  ${device.tablet} {
+    font-size: 14px;
+  }
 `;
 
 export const ItemText = styled.p`
-  font-size: 14px;
+  font-size: 12px;
   color: #5e5e5e;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+
+  ${device.tablet} {
+    font-size: 14px;
+  }
 `;

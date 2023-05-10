@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Input, InputBox, SearchSVG, ResetBtn, ResetSVG } from "./SearchBox.styled";
+import { Input, InputBox, SearchSVG, ResetBtn, ResetSVG, InfoText, InfoBox } from "./SearchBox.styled";
 import useDebounce from "react-debounced";
 
 export const SearchBox = ({ searchQuery }) => {
@@ -9,7 +9,9 @@ export const SearchBox = ({ searchQuery }) => {
 
   const onChange = (e) => {
     setQuery(e.target.value);
-    debounce(() => searchQuery(query));
+    if (query.length >= 2) {
+      debounce(() => searchQuery(query));
+    }
   };
 
   const resetQuery = () => {
@@ -25,6 +27,13 @@ export const SearchBox = ({ searchQuery }) => {
         <ResetBtn type="button" onClick={resetQuery}>
           <ResetSVG size={25} color="#8a8a8a" />
         </ResetBtn>
+      )}
+      {query.length <= 2 && query !== "" ? (
+        <InfoBox>
+          <InfoText>Please, enter at least 3 characters to search</InfoText>
+        </InfoBox>
+      ) : (
+        <></>
       )}
     </InputBox>
   );

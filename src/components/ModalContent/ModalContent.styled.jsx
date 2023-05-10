@@ -1,14 +1,21 @@
 import styled from "styled-components";
+import { device } from "../../utils/device";
 
 export const ContentWrapper = styled.div`
   position: relative;
-  padding: 30px 0;
+  padding: 30px 0 20px;
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: end;
+  gap: 20px;
+
+  ${device.tablet} {
+    gap: 30px;
+    padding: 30px 0;
+  }
 `;
 
 export const CloseBtn = styled.button`
@@ -47,9 +54,10 @@ export const ModalBtn = styled.button`
 `;
 
 export const Text = styled.p`
-  font-weight: 500;
   font-size: 14px;
-  line-height: 1.14;
-  letter-spacing: 0.02em;
   text-align: center;
+
+  ${device.tablet} {
+    font-size: 16px;
+  }
 `;

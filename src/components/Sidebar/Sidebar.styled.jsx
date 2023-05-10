@@ -18,8 +18,8 @@ export const NotesListContainer = styled.div`
   }
 
   ${device.tablet} {
-    min-width: 300px;
-    max-width: 300px;
+    min-width: 250px;
+    max-width: 250px;
   }
 `;
 
@@ -31,4 +31,14 @@ export const List = styled.ul`
 
   border-right: 1px solid lightgray;
   border-left: 1px solid lightgray;
+`;
+
+export const NoResult = styled.p`
+  font-size: 12px;
+  text-align: center;
+  margin-top: 20px;
+
+  ${device.tablet} {
+    font-size: 14px;
+  }
 `;

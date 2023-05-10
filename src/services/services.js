@@ -1,11 +1,11 @@
 import axios from "axios";
 
-const API_KEY = "	bWs8oNdZbdSy0ehv0TAmkD";
-axios.defaults.baseURL = `https://quintadb.com.ua/apps/a-qbL6WPjdT7VdJ1mgqJjJ/`;
+const API_KEY = "	cmW6ddUxbngQBdH8oaW7vG";
+axios.defaults.baseURL = `https://quintadb.com.ua/apps/dcQ8koW4PntOojWPBdRCkx/`;
 
 export const getAll = async () => {
   try {
-    return await axios.get(`dtypes/entity/bFrCkYWRzkEyo4W5iaWOeq.json?rest_api_key=${API_KEY}`);
+    return await axios.get(`dtypes/entity/coWONcKbvdVOovW7ZcO8oq.json?rest_api_key=${API_KEY}`);
   } catch (error) {
     console.log(error);
   }
@@ -15,10 +15,10 @@ export const createNew = async () => {
   try {
     return await axios.post(`dtypes.json?rest_api_key=${API_KEY}`, {
       values: {
-        entity_id: "bFrCkYWRzkEyo4W5iaWOeq",
-        baWO3cQa1bFOD0WR1Mm10O: " ",
-        ddM3Kkm2bkk4kBwSojo8kB: " ",
-        dcIcBdQa5ei4k6WPVcH8o6: new Date(Date.now()),
+        entity_id: "coWONcKbvdVOovW7ZcO8oq",
+        dcGSkGWP1adikXFCkuAmoi: " ",
+        ddRCo2W6HdTAfdWPjHiSoP: " ",
+        bvW7PSW6PcJyoYWONcKmkI: new Date(Date.now()),
       },
     });
   } catch (error) {
@@ -38,10 +38,10 @@ export const updateRecord = async (id, note) => {
   try {
     return await axios.put(`dtypes/${id}.json?rest_api_key=${API_KEY} `, {
       values: {
-        entity_id: "bFrCkYWRzkEyo4W5iaWOeq",
-        baWO3cQa1bFOD0WR1Mm10O: note.title,
-        ddM3Kkm2bkk4kBwSojo8kB: note.text,
-        dcIcBdQa5ei4k6WPVcH8o6: new Date(Date.now()),
+        entity_id: "coWONcKbvdVOovW7ZcO8oq",
+        dcGSkGWP1adikXFCkuAmoi: note.title,
+        ddRCo2W6HdTAfdWPjHiSoP: note.text,
+        bvW7PSW6PcJyoYWONcKmkI: new Date(Date.now()),
       },
     });
   } catch (error) {
@@ -51,9 +51,9 @@ export const updateRecord = async (id, note) => {
 
 export const searchByQuery = async (query) => {
   try {
-    return await axios.post(`https://quintadb.com.ua/search/a-qbL6WPjdT7VdJ1mgqJjJ.json?rest_api_key=${API_KEY}`, {
-      entity_id: "bFrCkYWRzkEyo4W5iaWOeq",
-      search: [[{ a: "ddM3Kkm2bkk4kBwSojo8kB", b: query, o: "contains" }]],
+    return await axios.post(`https://quintadb.com.ua/search/dcQ8koW4PntOojWPBdRCkx.json?rest_api_key=${API_KEY}`, {
+      entity_id: "coWONcKbvdVOovW7ZcO8oq",
+      search: [[{ a: "ddRCo2W6HdTAfdWPjHiSoP", b: query, o: "contains" }]],
     });
   } catch (error) {
     console.log(error);

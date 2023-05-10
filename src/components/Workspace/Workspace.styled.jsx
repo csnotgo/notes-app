@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { device } from "../../utils/device";
 
 export const NoteContainer = styled.div`
   height: calc(100vh - 40px);
@@ -8,16 +9,31 @@ export const NoteContainer = styled.div`
 
 export const NoteWrapper = styled.div`
   height: 100%;
-  padding: 15px 40px;
+  padding: 15px;
 
   text-align: center;
 
   border-left: 1px solid lightgray;
   border-right: 1px solid lightgray;
+
+  ${device.tablet} {
+    padding: 15px 40px;
+  }
 `;
 
 export const DateTime = styled.p`
-  color: gray;
+  margin-bottom: 10px;
+
+  font-size: 10px;
+  color: lightgray;
+
+  ${device.tablet} {
+    font-size: 14px;
+  }
+
+  ${device.desktop} {
+    font-size: 16px;
+  }
 `;
 
 export const NoteTitle = styled.textarea`
@@ -26,7 +42,9 @@ export const NoteTitle = styled.textarea`
   height: fit-content;
   width: 100%;
 
-  font-size: 16px;
+  font-size: 12px;
+  font-family: inherit;
+  letter-spacing: inherit;
 
   border: none;
   cursor: ${(prop) => (prop.readOnly ? "default" : "text")};
@@ -37,6 +55,10 @@ export const NoteTitle = styled.textarea`
 
   ::placeholder {
     color: ${(prop) => (prop.readOnly ? "transparent" : "lightgray")};
+  }
+
+  ${device.tablet} {
+    font-size: 16px;
   }
 `;
 
