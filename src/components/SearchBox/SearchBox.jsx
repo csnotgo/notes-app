@@ -1,16 +1,14 @@
 import { useState } from "react";
 import { Input, InputBox, SearchSVG, ResetBtn, ResetSVG, InfoText, InfoBox } from "./SearchBox.styled";
-import useDebounce from "react-debounced";
+import { debounce } from "../../utils/helpers";
 
 export const SearchBox = ({ searchQuery }) => {
   const [query, setQuery] = useState("");
 
-  const debounce = useDebounce(1000);
-
   const onChange = (e) => {
     setQuery(e.target.value);
-    if (query.length >= 2) {
-      debounce(() => searchQuery(query));
+    if (query.length === 3) {
+      debounce(searchQuery(query), 250);
     }
   };
 
